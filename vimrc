@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 colorscheme zenburn
 filetype plugin indent on
 syntax on
@@ -9,5 +11,4 @@ set number
 "set expandtab
 
 inoremap jk <ESC>
-
 let mapleader = "\<Space>"
