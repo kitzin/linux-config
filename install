@@ -1,9 +1,17 @@
 #!/bin/bash
 
-declare -a files=("tmux.conf" "bashrc" "vimrc" "vim")
+declare -a files=("README.md")
+
+contains() {
+	local e
+	for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+	return 1
+}
 
 DIR=`pwd`
-for file in "${files[@]}"; do
-	ln -fs $DIR/$FILE $HOME/.$FILE
+for file in $DIR/*; do
+	contains ${file##*/}
+	if [[ $? == 1 ]]; then continue; fi
+	ln -s $file ~/.${file##*/}
 done
 
