@@ -1,0 +1,3 @@
+irchell() {
+	ssh irchell.hardware.fail -p 666 -t "irchell"
+}
