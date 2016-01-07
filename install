@@ -15,5 +15,5 @@ git --git-dir=$DIR/.git --work-tree=$DIR submodule update
 for file in $DIR/*; do
 	contains ${file##*/}
 	if [[ $? == 0 ]]; then continue; fi
-	#ln -s $file ~/.${file##*/}
+	ln -s $file ~/.${file##*/}
 done
