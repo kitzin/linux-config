@@ -1,17 +1,16 @@
 #!/bin/bash
 
-declare -a files=("README.md")
+declare -a files=( "README.md" "install" )
 
 contains() {
 	local e
-	for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+	for e in "${files[@]}"; do [[ "$e" == "$1" ]] && return 0; done
 	return 1
 }
 
 DIR=`pwd`
 for file in $DIR/*; do
 	contains ${file##*/}
-	if [[ $? == 1 ]]; then continue; fi
+	if [[ $? == 0 ]]; then continue; fi
 	ln -s $file ~/.${file##*/}
 done
-
