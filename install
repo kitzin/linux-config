@@ -8,7 +8,7 @@ contains() {
 	return 1
 }
 
-DIR=`pwd`
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 git --git-dir=$DIR/.git --work-tree=$DIR submodule init
 git --git-dir=$DIR/.git --work-tree=$DIR submodule update
 
