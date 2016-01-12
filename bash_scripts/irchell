@@ -1,3 +1,3 @@
 irchell() {
-	ssh irchell.hardware.fail -p 666 -t "tmux -t irc"
+	ssh irchell.hardware.fail -p 666 -t "tmux a -t irc"
 }
