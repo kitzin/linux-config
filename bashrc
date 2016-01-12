@@ -1,3 +1,6 @@
+if [ -f "$HOME/.env" ]; then
+	. "$HOME/.env"
+fi
 if [ -d "$HOME/.bash_scripts" ]; then
 	for file in $HOME/.bash_scripts/*; do
 		. "$file"			
