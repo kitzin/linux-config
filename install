@@ -13,7 +13,17 @@ git --git-dir=$DIR/.git --work-tree=$DIR submodule init
 git --git-dir=$DIR/.git --work-tree=$DIR submodule update
 
 for file in $DIR/*; do
-	contains ${file##*/}
+	f="${file##*/}"
+	contains $f
 	if [[ $? == 0 ]]; then continue; fi
-	ln -sf $file $HOME/.${file##*/}
+
+	if [ -f "$HOME/.$f" ]; then type="file"; fi
+	if [ -d "$HOME/.$f" ]; then type="directory"; fi
+	if [ -f "$HOME/.$f" ]  || [ -d "$HOME/.$f" ]; then
+		read -p " Overwrite $type .$f (y/n)? " y
+		if [[ "$y" = "y" ]]; then
+			echo " Wrote over $type .$f"
+			ln -snf $file $HOME/.$f
+		fi
+	fi
 done
